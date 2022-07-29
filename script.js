@@ -3,7 +3,7 @@ const baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
 const key = 'fFtQQS5qQ0Vzx2gyCE9EryIzi6exRNqK';
 
 // Grab references to all the DOM elements you'll need to manipulate
-const searchTerm = document.querySelector('.search');
+const searchTerm = document.querySelector('.search'); 
 const startDate = document.querySelector('.start-date');
 const endDate = document.querySelector('.end-date');
 const searchForm = document.querySelector('form');
@@ -14,6 +14,7 @@ const nav = document.querySelector('nav');
 
 // Hide the "Previous"/"Next" navigation to begin with, as we don't need it immediately
 nav.style.display = 'none';
+nav.style.accentColor = 'black';
 
 // define the initial page number and status of the navigation being displayed
 let pageNumber = 0;
@@ -25,7 +26,7 @@ previousBtn.addEventListener('click', previousPage);
 
 function submitSearch(e) {
   pageNumber = 0;
-  fetchResults(e);
+  fetchResults(e);  
 }
 
 function fetchResults(e) {
@@ -41,7 +42,7 @@ function fetchResults(e) {
   };
 
   if (endDate.value !== '') {
-    url += `&end_date=${endDate.value}`;g
+    url += `&end_date=${endDate.value}`;
   };
 
   // Use fetch() to make the request to the API
