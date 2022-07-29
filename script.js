@@ -1,5 +1,4 @@
 // Defining a baseURL and key to as part of the request URL
-
 const baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
 const key = 'fFtQQS5qQ0Vzx2gyCE9EryIzi6exRNqK';
 
@@ -30,18 +29,19 @@ function submitSearch(e) {
 }
 
 function fetchResults(e) {
-  // Use preventDefault() to stop the form submitting
-  e.preventDefault();
+  e.preventDefault(); // explain: why we need preventDefault in this case?
+  // because the default action when submitting a form is sending request and (maybe)
+  // refresh the data, so we usually call preventDefault() to do smt with the data before
+  // it is sent -> mandatory  
 
   // Assemble the full URL
   let url = `${baseURL}?api-key=${key}&page=${pageNumber}&q=${searchTerm.value}&fq=document_type:("article")`;
-
   if (startDate.value !== '') {
-    url = `${url}&begin_date=${startDate.value}`;
+    url += `&begin_date=${startDate.value}`;
   };
 
   if (endDate.value !== '') {
-    url = `${url}&end_date=${endDate.value}`;
+    url += `&end_date=${endDate.value}`;g
   };
 
   // Use fetch() to make the request to the API
