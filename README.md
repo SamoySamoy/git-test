@@ -1,1 +1,1 @@
-Call RESTful API from NYTimes for a simple search web
+RESTful API from New York Times for a simple search web

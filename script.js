@@ -11,7 +11,10 @@ const nextBtn = document.querySelector('.next');
 const previousBtn = document.querySelector('.prev');
 const section = document.querySelector('section');
 const nav = document.querySelector('nav');
-
+const saveButton = document.querySelector('.save');
+const greeting = document.querySelector('.name-greeting');
+const para = document.querySelector('#greet');
+const nameInput = document.querySelector('#name');
 
 // Hide the "Previous"/"Next" navigation to begin with, as we don't need it immediately
 nav.style.display = 'none';
@@ -27,6 +30,10 @@ searchForm.addEventListener('submit', e => {
 });
 nextBtn.addEventListener('click', nextPage);
 previousBtn.addEventListener('click', previousPage);
+saveButton.addEventListener('click', () => {
+  para.textContent = `Welcome back, ${nameInput.value}`
+  greeting.appendChild(para);
+})
 
 
 function fetchResults(e) {
@@ -51,6 +58,7 @@ function fetchResults(e) {
     .then(response => response.json())
     .then(json => displayResults(json))
     .catch(error => console.error(`Error fetching data: ${error.message}`));
+    
 }
 
 function displayResults(json) {

@@ -4,6 +4,15 @@ body {
   color: green;
 }
 
+.enter-name {
+  text-align: center;
+}
+
+#name-greeting {
+  text-align: left;
+  display: flex;
+}
+
 .wrapper {
   width: 80%;
   margin: 0 auto;
