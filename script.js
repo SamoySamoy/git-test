@@ -1,6 +1,6 @@
 // Defining a baseURL and key to as part of the request URL
 const baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
-const key = 'fFtQQS5qQ0Vzx2gyCE9EryIzi6exRNqK';
+const key = 'fFtQQS5qQ0Vzx2gyCE9EryIzi6exRNqK'; // API key 
 
 // Grab references to all the DOM elements you'll need to manipulate
 const searchTerm = document.querySelector('.search'); 
@@ -14,15 +14,19 @@ const nav = document.querySelector('nav');
 
 // Hide the "Previous"/"Next" navigation to begin with, as we don't need it immediately
 nav.style.display = 'none';
-nav.style.accentColor = 'black';
+
+
 
 // define the initial page number and status of the navigation being displayed
 let pageNumber = 0;
+
 
 // Event listeners to control the functionality
 searchForm.addEventListener('submit', submitSearch);
 nextBtn.addEventListener('click', nextPage);
 previousBtn.addEventListener('click', previousPage);
+
+
 
 function submitSearch(e) {
   pageNumber = 0;
@@ -33,7 +37,8 @@ function fetchResults(e) {
   e.preventDefault(); // explain: why we need preventDefault in this case?
   // because the default action when submitting a form is sending request and (maybe)
   // refresh the data, so we usually call preventDefault() to do smt with the data before
-  // it is sent -> mandatory  
+  // it is sent -> mandatory
+
 
   // Assemble the full URL
   let url = `${baseURL}?api-key=${key}&page=${pageNumber}&q=${searchTerm.value}&fq=document_type:("article")`;
@@ -78,6 +83,7 @@ function displayResults(json) {
       const para1 = document.createElement('p');
       const keywordPara = document.createElement('p');
       keywordPara.classList.add('keywords');
+      //keywordPara.classList.add('Oh my posh');
 
       console.log(current);
 
