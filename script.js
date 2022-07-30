@@ -16,23 +16,18 @@ const nav = document.querySelector('nav');
 // Hide the "Previous"/"Next" navigation to begin with, as we don't need it immediately
 nav.style.display = 'none';
 
-
-
 // define the initial page number and status of the navigation being displayed
 let pageNumber = 0;
 
 
 // Event listeners to control the functionality
-searchForm.addEventListener('submit', submitSearch);
+searchForm.addEventListener('submit', e => {
+  pageNumber = 0;
+  fetchResults(e);
+});
 nextBtn.addEventListener('click', nextPage);
 previousBtn.addEventListener('click', previousPage);
 
-
-
-function submitSearch(e) {
-  pageNumber = 0;
-  fetchResults(e);  
-}
 
 function fetchResults(e) {
   e.preventDefault(); // explain: why we need preventDefault in this case?
@@ -59,6 +54,7 @@ function fetchResults(e) {
 }
 
 function displayResults(json) {
+  // delete all content of section area
   while (section.firstChild) {
     section.removeChild(section.firstChild);
   }
@@ -67,7 +63,8 @@ function displayResults(json) {
 
   if (articles.length === 10) {
     nav.style.display = 'block';
-  } else {
+  } 
+  else {
     nav.style.display = 'none';
   }
 
@@ -75,7 +72,8 @@ function displayResults(json) {
     const para = document.createElement('p');
     para.textContent = 'No results returned.'
     section.appendChild(para);
-  } else {
+  } 
+  else {
     for (const current of articles) {
       const article = document.createElement('article');
       const heading = document.createElement('h2');
@@ -84,7 +82,6 @@ function displayResults(json) {
       const para1 = document.createElement('p');
       const keywordPara = document.createElement('p');
       keywordPara.classList.add('keywords');
-      //keywordPara.classList.add('Oh my posh');
 
       console.log(current);
 
@@ -121,7 +118,8 @@ function nextPage(e) {
 function previousPage(e) {
   if (pageNumber > 0) {
     pageNumber--;
-  } else {
+  }
+  else {
     return;
   }
   fetchResults(e);
