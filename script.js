@@ -12,6 +12,7 @@ const previousBtn = document.querySelector('.prev');
 const section = document.querySelector('section');
 const nav = document.querySelector('nav');
 
+
 // Hide the "Previous"/"Next" navigation to begin with, as we don't need it immediately
 nav.style.display = 'none';
 
