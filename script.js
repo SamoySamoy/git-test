@@ -40,7 +40,7 @@ function fetchResults(e) {
   e.preventDefault(); // explain: why we need preventDefault in this case?
   // because the default action when submitting a form is sending request and (maybe)
   // refresh the data, so we usually call preventDefault() to do smt with the data before
-  // it is sent -> mandatory
+  // it is sent -> mandatory action
 
 
   // Assemble the full URL
